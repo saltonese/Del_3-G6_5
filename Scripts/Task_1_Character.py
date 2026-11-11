@@ -29,8 +29,9 @@ class Character:
                 dice decide the damage instead of the base damage
     
         """
-        self.name = name 
-        self.hp_max = hp.max    #protected: Only dameged via take_damage() / heal()
+        self.name = name
+        self._hp = hp_max     #protected: Only dameged via take_damage() / heal()
+        self.hp_max = hp_max    
         self.damage = damage
 
 
@@ -39,12 +40,51 @@ class Character:
     @property
     def hp(self) -> int: 
         """Read only property to view HP without allowing direct edits"""        
-        return self.hp
+        return self._hp
 
     @property
     def is_alive(self) -> bool:
         """Read only property: True if the character has any HP left"""
-        return self.hp > 0
+        return self._hp > 0
 
 
-    
+#------------------------------------------------------------------------------
+# Actions   
+    def take_damage(self, amount: int) -> int:
+        """
+        Reduce the chracters HP. HP is never less than 0
+        
+        Args:
+            amount (int): incoming damage (cant be nagative)
+        Returns:
+            int: How much HP the character has lost
+        """
+        if amount < 0:
+            raise ValueError("Damage cannot be negative")
+        hp_before = self._hp
+        self._hp = max(self._hp - amount, 0)
+        return hp_before - self._hp
+
+
+    def heal(self, amount: int) -> int:
+        """
+        Increase the character hp. HP never more than HP_max
+        A dead character cannot be healed.
+        
+        Args:
+            amount (int): How many hp to restore (cannot be nagative)
+        Return:
+            int: How much HP was restored.
+        """
+        
+        if amount < 0:
+            raise ValueError ( "Healing cannot be nagative")
+        if not self.is_alive:
+            return 0
+        hp_before = self._hp
+        self._hp = min(self._hp + amount, self.hp_max)
+        return self._hp - hp_before
+
+    def introduce(self) -> None:
+        """Pritns a string that introduces the character"""
+        print(f"I am the mighty {self.name}!")
