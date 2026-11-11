@@ -23,3 +23,8 @@ class Battle:
         self.enemy = enemy
         self.verbose = verbose
         self.rounds_played = 0
+
+    def _log(self, message: str) -> None:
+        """Print message if the battle is verbose."""
+        if self.verbose:
+            print(message)
