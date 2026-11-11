@@ -132,5 +132,31 @@ class Warrior(Character):
             raise ValueError("Damage cannot be negative.")
         return super().take_damage(max(amount - self.armor, 0))
 
-class Mage:
+class Mage(Character):
     """A resource-based attacker: spells cost mana, but hit twice as hard."""
+
+    SPELL_COST = 10 # Mana spent per spell
+    SPELL_MULTIPLIER = 2 # Spell damage = base damage * spell multiplier
+    MANA_REGEN = 5 # Mana restored when using base attack
+
+    def __init__(
+        self,
+        name: str,
+        hp_max: int = 100,
+        damage: int = 10,
+        mana: int = 30,
+        mana_max: int = 30,
+        ) -> None:
+        """
+        Initialise the Mage
+            
+        Args:
+            name, hp_max, damage, weapon: See Character.
+            mana (int): Current mana (default = 30)
+            mana_max (int): Max mana (default = 30)
+        """
+        
+        super().__init__(name, hp_max=hp_max, damage=damage)
+        self.mana_max = mana_max
+        self._mana = max(0, min(mana, mana_max))
+
