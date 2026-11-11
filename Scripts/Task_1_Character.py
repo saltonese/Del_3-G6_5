@@ -88,3 +88,28 @@ class Character:
     def introduce(self) -> None:
         """Pritns a string that introduces the character"""
         print(f"I am the mighty {self.name}!")
+#---------------------------------------------------------------
+#spesical methods
+
+    def __repr__(self) -> str:
+        """Representation of character object"""
+        return (
+            f"<{type(self).__name__} name={self.name} hp={self.hp} "
+            f"damage={self.damage}>"
+        )
+
+    def __str__(self) -> str:
+        """String representation of character object"""
+        return (
+            f"{type(self).__name__}: {self.name} with {self.hp} HP "
+            f"and {self.damage} damage"
+        )
+
+
+class Warrior:
+    """A defensive class with armour that reduses all damage taken"""
+
+
+
+class Mage:
+    """A resource-based attacker: spells cost mana, but hit twice as hard."""
