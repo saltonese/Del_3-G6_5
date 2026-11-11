@@ -85,6 +85,20 @@ class Character:
         self._hp = min(self._hp + amount, self.hp_max)
         return self._hp - hp_before
 
+    def _roll_attack_damage(self) -> int:
+        """Base attack damage, weapons will be added later"""
+
+        return self.damage
+
+    def attack(self, target: Character) -> int:
+        """
+        Attack the target by asking it to take damage.
+
+        Returns:
+        int: How many HP the target actually lost.
+        """
+        return target.take_damage(self._roll_attack_damage())
+
     def introduce(self) -> None:
         """Pritns a string that introduces the character"""
         print(f"I am the mighty {self.name}!")
