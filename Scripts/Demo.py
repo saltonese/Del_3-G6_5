@@ -43,7 +43,7 @@ def win_rates(n_battles: int = 1000) -> dict[str, int]:
 
 def main() -> None:
     """Run the demo"""
-    random.seed(42) #Reproducible results
+    random.seed(3) #Reproducible results
 
     print ("=== Dice ===")
     d20 = Dice(sides=20)
