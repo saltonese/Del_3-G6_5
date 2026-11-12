@@ -35,8 +35,8 @@ class Character:
         self.damage = damage
         self.weapon = weapon
 
-
-    #properties
+#--------------------------------------------------------------------------
+ #properties
 
     @property
     def hp(self) -> int: 
@@ -141,7 +141,7 @@ class Warrior(Character):
             armor (int): Damage subtracted from every incoming hit
             (default = 5)
         """
-        super().__init__(name, hp_max=hp_max, damage=damage)
+        super().__init__(name, hp_max=hp_max, damage=damage, weapon=weapon)
         self.armor = armor
 
     def take_damage(self, amount: int) -> int:
@@ -175,7 +175,7 @@ class Mage(Character):
             mana_max (int): Max mana (default = 30)
         """
         
-        super().__init__(name, hp_max=hp_max, damage=damage)
+        super().__init__(name, hp_max=hp_max, damage=damage, weapon=weapon)
         self.mana_max = mana_max
         self._mana = max(0, min(mana, mana_max))
 
