@@ -15,7 +15,7 @@ class Character:
         name: str,
         hp_max: int = 100,
         damage: int = 10,
-
+        weapon: Weapon | None = None
     ) -> None:
         """
         Initialise the Character
@@ -33,6 +33,7 @@ class Character:
         self._hp = hp_max     #protected: Only dameged via take_damage() / heal()
         self.hp_max = hp_max    
         self.damage = damage
+        self.weapon = weapon
 
 
     #properties
@@ -87,10 +88,12 @@ class Character:
 
     def _roll_attack_damage(self) -> int:
         """Base attack damage, weapons will be added later"""
+        if self.weapon is None:
+            return self.damage
+        else:
+            return self.weapon.roll_damage()
 
-        return self.damage
-
-    def attack(self, target: Character) -> int:
+    def attack(self, target: Character,) -> int:
         """
         Attack the target by asking it to take damage.
 
