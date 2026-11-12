@@ -4,6 +4,7 @@
 
 
 from __future__ import annotations
+from Task_3_items import Weapon
 
 
 class Character:
@@ -164,7 +165,7 @@ class Mage(Character):
         weapon: Weapon | None = None,
         mana: int = 30,
         mana_max: int = 30,
-        ) -> None:
+    ) -> None:
         """
         Initialise the Mage
             
