@@ -41,3 +41,23 @@ def win_rates(n_battles: int = 1000) -> dict[str, int]:
         wins[key] += 1
     return wins
 
+def main() -> None:
+    """Run the demo"""
+    random.seed(42) #Reproducible results
+
+    print ("=== Dice ===")
+    d20 = Dice(sides=20)
+    print(d20, "-> roll():", d20.roll(), "| call:", d20)
+
+    print("\n=== One battle ===")
+    hero, enemy = make_warrior(), make_mage()
+    print(hero)
+    print(enemy)
+    print()
+    Battle(hero, enemy).simulate_battle
+
+    print("\n=== 1000 battles: warrior (attacks first) vs mage ===")
+    print(win_rates(1000))
+
+if __name__ == "__main__":
+    main()

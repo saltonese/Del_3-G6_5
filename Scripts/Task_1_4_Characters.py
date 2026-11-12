@@ -6,7 +6,6 @@
 from __future__ import annotations
 
 
-
 class Character:
     """Repersents a character in the rpg"""
 
@@ -130,6 +129,7 @@ class Warrior(Character):
         name: str,
         hp_max: int = 100,
         damage: int = 10,
+        weapon: Weapon | None = None,
         armor: int = 5,
     )-> None:
         """
@@ -161,6 +161,7 @@ class Mage(Character):
         name: str,
         hp_max: int = 100,
         damage: int = 10,
+        weapon: Weapon | None = None,
         mana: int = 30,
         mana_max: int = 30,
         ) -> None:
