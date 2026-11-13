@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from Task_1_4_Characters import Character
+from Task_1_Characters import Character
 
 
 class Battle:

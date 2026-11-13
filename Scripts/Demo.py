@@ -1,11 +1,13 @@
 """Demo of the battle simulator."""
 
 import random
-
-from Task_5_Battles import Battle
-from Task_1_4_Characters import Mage, Warrior
+ 
 from Task_2_Dice import Dice
 from Task_3_items import Weapon
+from Task_4_Warrior import Warrior
+from Task_4_Mage import Mage
+from Task_5_Battles import Battle
+
 
 def make_warrior() -> Warrior:
     """Create a fresh warrior with a sword."""
